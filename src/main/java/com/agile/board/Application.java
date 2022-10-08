@@ -6,6 +6,7 @@ package com.agile.board;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.config.EnableReactiveMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 /**
  * Entry class of the project
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @SpringBootApplication
 @EnableReactiveMongoRepositories
 @ComponentScan(basePackages = "com.agile.board")
+@EnableReactiveMongoAuditing
 public class Application {
    
 	public String healthCheck() {
