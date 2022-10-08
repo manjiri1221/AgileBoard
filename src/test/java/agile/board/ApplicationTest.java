@@ -3,14 +3,24 @@
  */
 package agile.board;
 
+
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.agile.board.Application;
 
-class ApplicationTest {
-    @Test void healthCheckTest() {
+/**
+ * Test Class for main Application
+ * @author manjirilakhote
+ *
+ */
+@SpringBootTest
+public class ApplicationTest {
+    @Test 
+    public void healthCheckTest() {
         Application applicationTest = new Application();
         assertTrue("Health Ok".equals(applicationTest.healthCheck()));
         
