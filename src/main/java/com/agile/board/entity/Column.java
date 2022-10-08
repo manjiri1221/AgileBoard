@@ -16,11 +16,12 @@ import lombok.Data;
 @Document("column")
 public class Column extends CommonEntity{
 	
-	public Column(String name, ObjectId boardId, int sequence) {
-		super(name);
+	public Column(String name, ObjectId boardId, int sequence, ObjectId createdBy) {
+		super(name,createdBy);
 		this.setName(name);
 		this.setBoardId(boardId);
 		this.setSequence(sequence);
+		this.setCreatedBy(createdBy);
 	}
 	@NonNull
 	private ObjectId boardId;

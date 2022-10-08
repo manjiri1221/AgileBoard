@@ -3,7 +3,6 @@ package agile.board;
 
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.bson.types.ObjectId;
 import org.junit.Test;
@@ -14,39 +13,30 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.agile.board.Application;
-import com.agile.board.entity.Board;
-import com.agile.board.service.BoardService;
+import com.agile.board.entity.Card;
+import com.agile.board.service.CardService;
 /**
- * Test class for board
+ * Test class for Column
  * @author manjirilakhote
  *
  */
 @DataMongoTest
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes=Application.class)
-public class BoardTest {
+public class CardTest {
 
 	@Autowired
-	BoardService boardService;
+	CardService cardService;
 	
 	@Test
-	public void createEmptyBoardTest() {
+	public void createCardInColumnTest() {
 		
-		String name = "board1";
+		String name = "card1";
+		ObjectId columnId = new ObjectId("6341420bc0920229d1ba2bab");
 		ObjectId createdBy = new ObjectId("6341420bc0920229d1ba2bab");
-		Board board = boardService.createBoard(name,createdBy).block();
-		assertTrue(name.equals(board.getName()));
-		
-	}
-	
-	@Test
-	public void createBoardWithNoNameTest() {
-		
-		String name = null;
-		ObjectId userId = new ObjectId("6341420bc0920229d1ba2bab");
-		Board board = boardService.createBoard(name,userId).block();
-		assertTrue(name.equals(board.getName()));
-		
+		int sequence = 1;
+		Card card = cardService.createCard(name,columnId,sequence,createdBy).block();
+		assertTrue(name.equals(card.getName()));
 	}
 
 }

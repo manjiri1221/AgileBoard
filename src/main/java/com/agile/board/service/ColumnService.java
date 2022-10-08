@@ -20,8 +20,8 @@ public class ColumnService {
 	@Autowired
 	ColumnDao columnDao;
 
-	public Mono<Column> createColumn(String name, ObjectId boardId, int sequence) {
-		Column column = new Column(name,boardId, sequence);
+	public Mono<Column> createColumn(String name, ObjectId boardId, int sequence, ObjectId createdBy) {
+		Column column = new Column(name,boardId, sequence,createdBy);
 		return columnDao.save(column);
 	}
 	

@@ -1,5 +1,6 @@
 package com.agile.board.entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("user")
 public class User extends CommonEntity{
 	public User(String name) {
-		super(name);
+		super(name,new ObjectId());
 		this.setName(name);
 	}
 	

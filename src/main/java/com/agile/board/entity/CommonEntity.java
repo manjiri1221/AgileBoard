@@ -28,6 +28,7 @@ public class CommonEntity {
 	private boolean isActive = true;
 	@NonNull
 	private String name;
+	@NonNull
 	private ObjectId createdBy;
 
 }

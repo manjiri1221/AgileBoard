@@ -20,8 +20,8 @@ public class BoardService {
 	@Autowired
 	BoardDao boardDao;
 	
-	public Mono<Board> createBoard(String name, ObjectId userId) {
-		Board board = new Board(name,userId);
+	public Mono<Board> createBoard(String name, ObjectId createdBy) {
+		Board board = new Board(name,createdBy);
 		return boardDao.save(board);
 	}
 
