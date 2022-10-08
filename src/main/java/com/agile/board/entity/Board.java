@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Board extends CommonEntity{
 
 	public Board(String name, ObjectId userId) {
+		super(name);
 		this.setName(name);
 		this.setCreatedBy(userId);
 	}

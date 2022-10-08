@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("user")
 public class User extends CommonEntity{
 	public User(String name) {
+		super(name);
 		this.setName(name);
 	}
 	
