@@ -4,6 +4,9 @@ package agile.board;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +30,8 @@ public class CardTest {
 
 	@Autowired
 	CardService cardService;
+	
+	//Create a basic card.
 	
 	@Test
 	public void createCardInColumnTest() throws Exception {
@@ -132,5 +137,21 @@ public class CardTest {
 		
 	}
 	
+	//Create a card with tags
+	
+	@Test
+	public void createCardWithTagsInColumnTest() throws Exception {
+		
+		String name = "card1";
+		ObjectId columnId = new ObjectId("6341420bc0920229d1ba2bab");
+		ObjectId createdBy = new ObjectId("6341420bc0920229d1ba2bab");
+		List<String> tags = new ArrayList();
+		tags.add("one");
+		tags.add("green");
+		tags.add("square");
+		int sequence = 1;
+		Card card = cardService.createCard(name,columnId,sequence,createdBy,tags).block();
+		assertTrue(name.equals(card.getName()));
+	}
 
 }

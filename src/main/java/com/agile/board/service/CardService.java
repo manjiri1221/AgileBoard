@@ -1,5 +1,7 @@
 package com.agile.board.service;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,13 @@ public class CardService {
 		throw new Exception("Name or columnId or createdBy is null or empty");
 	}
 	
+	public Mono<Card> createCard(String name, ObjectId columnId, int sequence, ObjectId createdBy, List<String> tags) throws Exception {
+		if(StringUtils.hasLength(name) && columnId!=null && createdBy!=null && tags!=null & !tags.isEmpty()) {
+			Card card = new Card(name,columnId,sequence,createdBy,tags);
+			return cardDao.save(card);
+		}
+		throw new Exception("Name or columnId or createdBy or tags is null or empty");
+	}
 	
 
 }

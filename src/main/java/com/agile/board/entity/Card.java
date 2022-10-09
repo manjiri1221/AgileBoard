@@ -1,5 +1,8 @@
 package com.agile.board.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,8 +25,16 @@ public class Card extends CommonEntity{
 		this.setSequence(sequence);
 		this.setCreatedBy(createdBy);
 	}
+	public Card(String name, ObjectId columnId, int sequence, ObjectId createdBy, List<String> tags) {
+		super();
+		this.setName(name);
+		this.setColumnId(columnId);
+		this.setSequence(sequence);
+		this.setCreatedBy(createdBy);
+		this.tags.addAll(tags);
+	}
 	private ObjectId columnId;
-	private String[] tags;
+	private List<String> tags = new ArrayList<>();
 	private int sequence;
 	private ObjectId[] users;
 }

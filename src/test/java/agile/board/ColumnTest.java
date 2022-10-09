@@ -28,6 +28,8 @@ public class ColumnTest {
 	@Autowired
 	ColumnService columnService;
 	
+	// Create a column on board
+	
 	@Test
 	public void createColumnInBoardTest() throws Exception {
 		
