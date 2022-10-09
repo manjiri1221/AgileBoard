@@ -5,6 +5,7 @@ package agile.board;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -191,6 +192,19 @@ public class CardTest {
 			assertTrue(card.getColumnId().equals(columnId));
 		});	
 
-	}	
+	}
 
+	
+	//Q4 Build a service to list all cards created after a given timestamp
+	
+	@Test
+	public void listCardsCreatedAfterTimestamp() throws Exception {
+		
+		Date timestamp = new Date(1665273600000l);
+		List<Card> cards = cardService.listCardsCreatedAfterTimestamp(timestamp).collectList().block();
+		cards.forEach(card->{
+			assertTrue(card.getCreatedOn().after(timestamp));
+		});	
+	}
 }
+

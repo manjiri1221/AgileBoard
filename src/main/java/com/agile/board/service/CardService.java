@@ -1,6 +1,7 @@
 package com.agile.board.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -69,6 +70,15 @@ public class CardService {
 			return cardDao.findAllByColumnIdAndIsActive(columnId,true);
 		}
 		throw new Exception("columnId is null");
+	}
+	
+	//Q4 Build a service to list all cards created after a given timestamp
+	public Flux<Card> listCardsCreatedAfterTimestamp(Date timestamp) throws Exception {
+		if(timestamp!=null) {
+			return cardDao.findAllByCreatedOnGreaterThan(timestamp);
+		}
+		throw new Exception("timestamp is null");
+		
 	}
 	
 
