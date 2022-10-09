@@ -180,7 +180,17 @@ public class CardTest {
 
 	}
 	
+	//Q3 Build a search service to list all cards in a column
 	
-	
+	@Test
+	public void listCardsInAColumnTest() throws Exception {
+		
+		ObjectId columnId = new ObjectId("6341420bc0920229d1ba2bab");
+		List<Card> cards = cardService.listCardsInAColumn(columnId).collectList().block();
+		cards.forEach(card->{
+			assertTrue(card.getColumnId().equals(columnId));
+		});	
+
+	}	
 
 }

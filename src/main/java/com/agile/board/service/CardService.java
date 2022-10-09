@@ -62,6 +62,14 @@ public class CardService {
 		}
 		throw new Exception("tag is null or empty");
 	}
+
+	//Q3 Build a search service to list all cards in a column
+	public Flux<Card> listCardsInAColumn(ObjectId columnId) throws Exception {
+		if(columnId!=null) {
+			return cardDao.findAllByColumnIdAndIsActive(columnId,true);
+		}
+		throw new Exception("columnId is null");
+	}
 	
 
 }

@@ -17,4 +17,7 @@ public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
 	// Find all cards containing the given tag
 	Flux<Card> findAllByTagsAndIsActive(String tags,boolean isActive);
 
+	// Find all cards for the given columnId
+	Flux<Card> findAllByColumnIdAndIsActive(ObjectId columnId, boolean isActive);
+
 }
