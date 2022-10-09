@@ -3,6 +3,7 @@ package com.agile.board.dao;
 import java.util.Date;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import com.agile.board.entity.Card;
@@ -26,6 +27,7 @@ public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
 	Flux<Card> findAllByCreatedOnGreaterThan(Date timestamp);
 	
 	//Find all cards whose createdOn is greater than or modifiedOn is greated than given timestamp
+	@Query(value = "{'$or' :[{createdOn:{'$gt' : ?0}},{lastModifiedOn:{'$gt': ?0}}]}")
 	Flux<Card> findAllByCreatedOnGreaterThanOrLastModifiedOnGreaterThan(Date timestamp);
 
 }

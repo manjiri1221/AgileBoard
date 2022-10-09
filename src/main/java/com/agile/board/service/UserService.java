@@ -2,6 +2,7 @@ package com.agile.board.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.bson.types.ObjectId;
@@ -41,7 +42,7 @@ public class UserService {
 	}
 
 	// Get the time user last visited the given board
-	public Flux<BoardVisit> getLastVisitedTimeForBoard(ObjectId userId, ObjectId boardId) {
+	public Flux<Map> getLastVisitedTimeForBoard(ObjectId userId, ObjectId boardId) {
 		return userDaoImpl.getLastVisitedTimeForBoard(userId,boardId);
 	}
 

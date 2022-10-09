@@ -3,6 +3,7 @@ package com.agile.board.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,8 +96,9 @@ public class CardService {
 	//Q5 Build a service to lists all the cards which should be highlighted for a user
 	public Flux<Card> listCardsToHighlightToUser(ObjectId userId, ObjectId boardId) throws Exception {
 		if(userId!=null && boardId!=null) {
-			return userService.getLastVisitedTimeForBoard(userId,boardId).flatMap(boardVisit->{
-				 return listCardCreatedOrLastModifiedAfterLastVisitedTime(( boardVisit.getLastVisitedOn()));
+			return userService.getLastVisitedTimeForBoard(userId,boardId).flatMap(map->{
+				Map<String,Object> boardVisitMap = (Map<String, Object>) map.get("boards");
+				 return listCardCreatedOrLastModifiedAfterLastVisitedTime((Date) ( boardVisitMap.get("lastVisitedOn")));
 			});
 			
 		}

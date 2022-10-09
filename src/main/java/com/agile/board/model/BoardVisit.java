@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 /**
  * Model for details of user's visit on board
@@ -11,6 +13,7 @@ import lombok.Data;
  *
  */
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BoardVisit {
 
 	private ObjectId boardId;

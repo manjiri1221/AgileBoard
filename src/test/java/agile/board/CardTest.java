@@ -215,6 +215,7 @@ public class CardTest {
 		ObjectId userId = new ObjectId("634240646de61b2e5c212a02");
 		ObjectId boardId = new ObjectId("6342042f86d8d564ddb1f819");
 		List<Card> cards = cardService.listCardsToHighlightToUser(userId,boardId).collectList().block();
+		System.out.println(cards.size());
 		cards.forEach(card->{
 			assertTrue(card.getLastModifiedOn().after(new Date(1665273600000l)));
 		});	
