@@ -2,7 +2,6 @@ package agile.board;
 
 
 
-import static org.assertj.core.api.Assertions.catchException;
 import static org.junit.Assert.assertTrue;
 
 import org.bson.types.ObjectId;
