@@ -160,10 +160,26 @@ public class CardTest {
 	@Test
 	public void updateCardWithTagTest() throws Exception {
 		
-		ObjectId cardId = new ObjectId("63421ecc9e21c74c1f5c9350");
+		ObjectId cardId = new ObjectId("63421ecc9e21c74c1f5c934f");
 		String tag = "circle";
 		Card card = cardService.updateTagInCard(cardId,tag).block();
-		assertTrue(cardId.equals(card.getId()));
+		assertTrue(card.getTags().contains(tag));
+	}
+	
+	
+	//Q2 List all cards containing a tag
+	
+	@Test
+	public void listCardsWithATagTest() throws Exception {
+		
+		String tag = "circle";
+		List<Card> cards = cardService.listCardsWithATag(tag).collectList().block();
+		cards.forEach(card->{
+			assertTrue(card.getTags().contains(tag));
+		});	
+
+		
+
 	}
 
 }

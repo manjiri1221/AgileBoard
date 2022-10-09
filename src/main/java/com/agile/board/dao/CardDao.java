@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import com.agile.board.entity.Card;
 
+import reactor.core.publisher.Flux;
+
 /**
  * Dao for card
  * @author manjirilakhote
@@ -12,6 +14,6 @@ import com.agile.board.entity.Card;
  */
 public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
 	
-	
+	Flux<Card> findAllByTags(String tags);
 
 }

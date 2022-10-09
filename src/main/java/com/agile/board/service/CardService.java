@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 import com.agile.board.dao.CardDao;
 import com.agile.board.entity.Card;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -52,6 +53,13 @@ public class CardService {
 			 });
 		}
 		throw new Exception("cardId or tag is null or empty");
+	}
+
+	public Flux<Card> listCardsWithATag(String tag) throws Exception {
+		if(StringUtils.hasLength(tag)) {
+			return cardDao.findAllByTags(tag);
+		}
+		throw new Exception("tag is null or empty");
 	}
 	
 

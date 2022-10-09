@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Card extends CommonEntity{
 	public Card() {}
 	
 	private ObjectId columnId;
+	@Indexed
 	private List<String> tags = new ArrayList<>();
 	private int sequence;
 	private ObjectId[] users;
