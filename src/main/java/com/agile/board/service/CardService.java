@@ -55,9 +55,10 @@ public class CardService {
 		throw new Exception("cardId or tag is null or empty");
 	}
 
+	//Q2. Build a search service to list all cards containing a tag
 	public Flux<Card> listCardsWithATag(String tag) throws Exception {
 		if(StringUtils.hasLength(tag)) {
-			return cardDao.findAllByTags(tag);
+			return cardDao.findAllByTagsAndIsActive(tag,true);
 		}
 		throw new Exception("tag is null or empty");
 	}

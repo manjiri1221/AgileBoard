@@ -13,7 +13,8 @@ import reactor.core.publisher.Flux;
  *
  */
 public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
-	
-	Flux<Card> findAllByTags(String tags);
+
+	// Find all cards containing the given tag
+	Flux<Card> findAllByTagsAndIsActive(String tags,boolean isActive);
 
 }

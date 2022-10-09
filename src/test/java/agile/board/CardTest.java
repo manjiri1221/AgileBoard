@@ -167,7 +167,7 @@ public class CardTest {
 	}
 	
 	
-	//Q2 List all cards containing a tag
+	//Q2 Build a search service to list all cards containing a tag
 	
 	@Test
 	public void listCardsWithATagTest() throws Exception {
@@ -178,8 +178,9 @@ public class CardTest {
 			assertTrue(card.getTags().contains(tag));
 		});	
 
-		
-
 	}
+	
+	
+	
 
 }
