@@ -12,8 +12,8 @@ import org.springframework.util.StringUtils;
 
 import com.agile.board.dao.UserDao;
 import com.agile.board.dao.impl.UserDaoImpl;
+import com.agile.board.entity.BoardVisit;
 import com.agile.board.entity.User;
-import com.agile.board.model.BoardVisit;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

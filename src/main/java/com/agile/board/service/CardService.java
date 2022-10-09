@@ -105,7 +105,7 @@ public class CardService {
 		throw new Exception("userId or boardId is null");
 	}
 
-	// Get a list of cards which are either created or modified after the fiven timestamp
+	// Get a list of cards which are either created or modified after the given timestamp
 	private Flux<Card> listCardCreatedOrLastModifiedAfterLastVisitedTime(Date lastVisitedOn) {
 		return cardDao.findAllByCreatedOnGreaterThanOrLastModifiedOnGreaterThan(lastVisitedOn);
 		

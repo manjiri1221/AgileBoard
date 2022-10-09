@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class CardDto extends CommonDto{
 	
-	private ObjectId columnId;
+	private String columnId;
 	private List<String> tags = new ArrayList<>();
 	private int sequence;
 	private List<UserDto> users;

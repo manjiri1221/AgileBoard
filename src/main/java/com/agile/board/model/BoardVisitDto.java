@@ -14,13 +14,8 @@ import lombok.Data;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BoardVisit {
+public class BoardVisitDto {
 
-	private ObjectId boardId;
+	private String boardId;
 	private Date lastVisitedOn;
-	
-	public BoardVisit(ObjectId boardId,Date lastVisitedOn){
-		this.boardId = boardId;
-		this.lastVisitedOn = lastVisitedOn;
-	}
 }

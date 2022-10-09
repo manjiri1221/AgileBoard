@@ -45,7 +45,7 @@ public class ColumnService {
 	public Flux<ColumnDto> getColumnsForABoard(ObjectId boardId) {
 		return columnDaoImpl.getColumnsForABoard(boardId).flatMap(columnDto->{
 			try {
-				return cardService.listCardsInAColumn(columnDto.getId()).collectList().map(list->{
+				return cardService.listCardsInAColumn(new ObjectId(columnDto.getId())).collectList().map(list->{
 					columnDto.setCards(list);
 					return columnDto;
 				});

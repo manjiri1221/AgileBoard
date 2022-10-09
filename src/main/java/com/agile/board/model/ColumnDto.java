@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @Data
 public class ColumnDto extends CommonDto {
-	private ObjectId boardId;
+	private String boardId;
 	private int sequence;
 	private List<CardDto> cards = new ArrayList<>();
 }

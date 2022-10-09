@@ -190,7 +190,7 @@ public class CardTest {
 		ObjectId columnId = new ObjectId("6341420bc0920229d1ba2bab");
 		List<CardDto> cards = cardService.listCardsInAColumn(columnId).collectList().block();
 		cards.forEach(card->{
-			assertTrue(card.getColumnId().equals(columnId));
+			assertTrue(card.getColumnId().equals(columnId.toHexString()));
 		});	
 
 	}

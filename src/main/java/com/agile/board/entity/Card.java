@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.agile.board.model.CardDto;
 
 import lombok.Data;
 
@@ -42,4 +45,5 @@ public class Card extends CommonEntity{
 	private int sequence;
 	//All the users working on the card
 	private ObjectId[] users;
+	
 }

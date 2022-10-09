@@ -11,5 +11,5 @@ import lombok.Data;
  */
 @Data
 public class UserDto extends CommonDto{
-	List<BoardVisit> boards = new ArrayList<BoardVisit>();
+	List<BoardVisitDto> boards = new ArrayList<BoardVisitDto>();
 }

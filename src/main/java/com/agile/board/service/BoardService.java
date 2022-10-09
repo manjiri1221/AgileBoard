@@ -42,7 +42,7 @@ public class BoardService {
 	//List the board with columns and cards and users
 	public Flux<BoardDto> listABoardWithColumnsAndCards(ObjectId boardId) {
 		return boardDaoImpl.getBoardDetails(boardId).flatMap(boardDto->{
-			return columnService.getColumnsForABoard(boardDto.getId()).collectList().map(list->{
+			return columnService.getColumnsForABoard(new ObjectId(boardDto.getId())).collectList().map(list->{
 				boardDto.setColumns(list);
 				return boardDto;
 			});

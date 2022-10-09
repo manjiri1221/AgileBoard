@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class CommonDto {
 
-	private ObjectId id;
+	private String id;
 	private Date createdOn;
 	private Date lastModifiedOn;
 	private boolean isActive = true;
