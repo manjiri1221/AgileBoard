@@ -45,8 +45,8 @@ public class BoardTest {
 	public void createBoardWithNullNameTest() throws Exception {
 		
 		String name = null;
-		ObjectId userId = new ObjectId("6341420bc0920229d1ba2bab");
-		boardService.createBoard(name,userId).block();
+		ObjectId createdBy = new ObjectId("6341420bc0920229d1ba2bab");
+		boardService.createBoard(name,createdBy).block();
 		
 	}
 	
@@ -56,8 +56,19 @@ public class BoardTest {
 	public void createBoardWithEmptyNameTest() throws Exception {
 		
 		String name = "";
-		ObjectId userId = new ObjectId("6341420bc0920229d1ba2bab");
-		boardService.createBoard(name,userId).block();
+		ObjectId createdBy = new ObjectId("6341420bc0920229d1ba2bab");
+		boardService.createBoard(name,createdBy).block();
+		
+	}
+	
+	
+	// Test with null createdBy, it should throw an exception
+	
+	@Test(expected = Exception.class)
+	public void createBoardWithNullCreatedByTest() throws Exception {
+		
+		String name = "board1";
+		boardService.createBoard(name,null).block();
 		
 	}
 
