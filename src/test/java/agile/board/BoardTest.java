@@ -71,5 +71,14 @@ public class BoardTest {
 		boardService.createBoard(name,null).block();
 		
 	}
+	
+	// Test without name,createdBy, it should throw an exception
+	
+	@Test(expected = Exception.class)
+	public void createBoardWithoutNameAndCreatedByTest() throws Exception {
+		
+		boardService.createBoard(null,null).block();
+		
+	}
 
 }
