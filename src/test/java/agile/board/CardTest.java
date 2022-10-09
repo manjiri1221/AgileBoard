@@ -153,5 +153,17 @@ public class CardTest {
 		Card card = cardService.createCard(name,columnId,sequence,createdBy,tags).block();
 		assertTrue(name.equals(card.getName()));
 	}
+	
+
+	//Update a card with tag
+	
+	@Test
+	public void updateCardWithTagTest() throws Exception {
+		
+		ObjectId cardId = new ObjectId("63421ecc9e21c74c1f5c9350");
+		String tag = "circle";
+		Card card = cardService.updateTagInCard(cardId,tag).block();
+		assertTrue(cardId.equals(card.getId()));
+	}
 
 }

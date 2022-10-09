@@ -14,5 +14,6 @@ public class User extends CommonEntity{
 		super();
 		this.setName(name);
 	}
+	public User() {}
 	
 }

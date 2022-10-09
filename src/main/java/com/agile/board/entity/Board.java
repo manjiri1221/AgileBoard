@@ -15,5 +15,6 @@ public class Board extends CommonEntity{
 		this.setName(name);
 		this.setCreatedBy(createdBy);
 	}
+	Board(){}
 
 }

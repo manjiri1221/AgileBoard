@@ -21,6 +21,7 @@ public class Column extends CommonEntity{
 		this.setSequence(sequence);
 		this.setCreatedBy(createdBy);
 	}
+	public Column() {}
 	private ObjectId boardId;
 	// Determines the position of column on the board, can be autoIncremented or taken as input from frontend.
 	private int sequence;

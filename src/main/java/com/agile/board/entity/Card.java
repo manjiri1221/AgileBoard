@@ -33,6 +33,8 @@ public class Card extends CommonEntity{
 		this.setCreatedBy(createdBy);
 		this.tags.addAll(tags);
 	}
+	public Card() {}
+	
 	private ObjectId columnId;
 	private List<String> tags = new ArrayList<>();
 	private int sequence;

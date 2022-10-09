@@ -11,5 +11,7 @@ import com.agile.board.entity.Card;
  *
  */
 public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
+	
+	
 
 }
