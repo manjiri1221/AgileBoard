@@ -7,8 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.mongodb.lang.NonNull;
-
 import lombok.Data;
 
 /**
@@ -26,9 +24,7 @@ public class CommonEntity {
 	@LastModifiedDate
 	private Date lastModifiedOn;
 	private boolean isActive = true;
-	@NonNull
 	private String name;
-	@NonNull
 	private ObjectId createdBy;
 
 }

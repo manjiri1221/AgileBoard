@@ -16,7 +16,7 @@ import lombok.Data;
 public class Card extends CommonEntity{
 
 	public Card(String name, ObjectId columnId, int sequence, ObjectId createdBy) {
-		super(name, createdBy);
+		super();
 		this.setName(name);
 		this.setColumnId(columnId);
 		this.setSequence(sequence);
