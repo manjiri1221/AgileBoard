@@ -206,5 +206,18 @@ public class CardTest {
 			assertTrue(card.getCreatedOn().after(timestamp));
 		});	
 	}
+	
+	// Q5 Build a service to lists all the cards which should be highlighted for a user
+	@Test
+	public void listCardsToHighlightToUser() throws Exception {
+		
+		ObjectId userId = new ObjectId("634240646de61b2e5c212a02");
+		ObjectId boardId = new ObjectId("6342042f86d8d564ddb1f819");
+		List<Card> cards = cardService.listCardsToHighlightToUser(userId,boardId).collectList().block();
+		cards.forEach(card->{
+			assertTrue(card.getLastModifiedOn().after(new Date(1665273600000l)));
+		});	
+	}
+	
 }
 

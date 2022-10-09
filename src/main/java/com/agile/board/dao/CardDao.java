@@ -22,7 +22,10 @@ public interface CardDao extends ReactiveMongoRepository<Card, ObjectId>{
 	// Find all cards for the given columnId
 	Flux<Card> findAllByColumnIdAndIsActive(ObjectId columnId, boolean isActive);
 
-	//Find all cards whose createdOn is greated than given timestamp
+	//Find all cards whose createdOn is greater than given timestamp
 	Flux<Card> findAllByCreatedOnGreaterThan(Date timestamp);
+	
+	//Find all cards whose createdOn is greater than or modifiedOn is greated than given timestamp
+	Flux<Card> findAllByCreatedOnGreaterThanOrLastModifiedOnGreaterThan(Date timestamp);
 
 }

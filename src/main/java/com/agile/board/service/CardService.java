@@ -25,6 +25,9 @@ public class CardService {
 	
 	@Autowired
 	CardDao cardDao;
+	
+	@Autowired
+	UserService userService;
 
 	public Mono<Card> createCard(String name, ObjectId columnId, int sequence, ObjectId createdBy) throws Exception {
 		if(StringUtils.hasLength(name) && columnId!=null && createdBy!=null) {
@@ -78,6 +81,22 @@ public class CardService {
 			return cardDao.findAllByCreatedOnGreaterThan(timestamp);
 		}
 		throw new Exception("timestamp is null");
+		
+	}
+
+	//Q5 Build a service to lists all the cards which should be highlighted for a user
+	public Flux<Card> listCardsToHighlightToUser(ObjectId userId, ObjectId boardId) throws Exception {
+		if(userId!=null && boardId!=null) {
+			return userService.getLastVisitedTimeForBoard(userId,boardId).flatMap(boardVisit->{
+				 return listCardCreatedOrLastModifiedAfterLastVisitedTime(( boardVisit.getLastVisitedOn()));
+			});
+			
+		}
+		throw new Exception("userId or boardId is null");
+	}
+
+	private Flux<Card> listCardCreatedOrLastModifiedAfterLastVisitedTime(Date lastVisitedOn) {
+		return cardDao.findAllByCreatedOnGreaterThanOrLastModifiedOnGreaterThan(lastVisitedOn);
 		
 	}
 	
