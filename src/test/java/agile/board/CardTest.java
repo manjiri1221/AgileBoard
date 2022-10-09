@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.agile.board.Application;
 import com.agile.board.entity.Card;
+import com.agile.board.model.CardDto;
 import com.agile.board.service.CardService;
 /**
  * Test class for Column
@@ -187,7 +188,7 @@ public class CardTest {
 	public void listCardsInAColumnTest() throws Exception {
 		
 		ObjectId columnId = new ObjectId("6341420bc0920229d1ba2bab");
-		List<Card> cards = cardService.listCardsInAColumn(columnId).collectList().block();
+		List<CardDto> cards = cardService.listCardsInAColumn(columnId).collectList().block();
 		cards.forEach(card->{
 			assertTrue(card.getColumnId().equals(columnId));
 		});	

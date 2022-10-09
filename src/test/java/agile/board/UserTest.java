@@ -27,6 +27,7 @@ public class UserTest {
 	@Autowired
 	UserService userService;
 
+	// Test to create a user
 	@Test
 	public void createUserTest() throws Exception {
 		String name = "user1";
@@ -34,6 +35,7 @@ public class UserTest {
 		assertTrue(user!=null && name.equals(user.getName()));
 	}
 	
+	//Negative Test to create a user with blank name
 	@Test(expected = Exception.class)
 	public void createUserWithBlankNameTest() throws Exception {
 		String name = "";
@@ -41,6 +43,7 @@ public class UserTest {
 
 	}
 	
+	//Negative Test to create a user with null name
 	@Test(expected = Exception.class)
 	public void createUserWithNullNameTest() throws Exception {
 		String name = null;
@@ -48,6 +51,7 @@ public class UserTest {
 
 	}
 	
+	//Test to check if user objects keeps a track of boards it visits
 	@Test
 	public void updateUserAfterBoardVisitTest() throws Exception {
 		ObjectId userId = new ObjectId("634240646de61b2e5c212a02");

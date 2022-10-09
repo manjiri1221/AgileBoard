@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.agile.board.dao.CardDao;
+import com.agile.board.dao.impl.CardDaoImpl;
 import com.agile.board.entity.Card;
+import com.agile.board.model.CardDto;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,7 +30,11 @@ public class CardService {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CardDaoImpl cardDaoImpl;
 
+	//Create a card in a column
 	public Mono<Card> createCard(String name, ObjectId columnId, int sequence, ObjectId createdBy) throws Exception {
 		if(StringUtils.hasLength(name) && columnId!=null && createdBy!=null) {
 			Card card = new Card(name,columnId,sequence,createdBy);
@@ -37,6 +43,7 @@ public class CardService {
 		throw new Exception("Name or columnId or createdBy is null or empty");
 	}
 	
+	//Create a card in a column along with tags
 	public Mono<Card> createCard(String name, ObjectId columnId, int sequence, ObjectId createdBy, List<String> tags) throws Exception {
 		if(StringUtils.hasLength(name) && columnId!=null && createdBy!=null && tags!=null & !tags.isEmpty()) {
 			Card card = new Card(name,columnId,sequence,createdBy,tags);
@@ -44,7 +51,8 @@ public class CardService {
 		}
 		throw new Exception("Name or columnId or createdBy or tags is null or empty");
 	}
-
+	
+	// Update tags in a card
 	public Mono<Card> updateTagInCard(ObjectId cardId, String tag) throws Exception {
 		if(cardId!=null && StringUtils.hasLength(tag)) {
 			 return cardDao.findById(cardId).flatMap(card->{
@@ -68,9 +76,9 @@ public class CardService {
 	}
 
 	//Q3 Build a search service to list all cards in a column
-	public Flux<Card> listCardsInAColumn(ObjectId columnId) throws Exception {
+	public Flux<CardDto> listCardsInAColumn(ObjectId columnId) throws Exception {
 		if(columnId!=null) {
-			return cardDao.findAllByColumnIdAndIsActive(columnId,true);
+			return cardDaoImpl.getCardDetailsForAColumn(columnId);
 		}
 		throw new Exception("columnId is null");
 	}
@@ -95,6 +103,7 @@ public class CardService {
 		throw new Exception("userId or boardId is null");
 	}
 
+	// Get a list of cards which are either created or modified after the fiven timestamp
 	private Flux<Card> listCardCreatedOrLastModifiedAfterLastVisitedTime(Date lastVisitedOn) {
 		return cardDao.findAllByCreatedOnGreaterThanOrLastModifiedOnGreaterThan(lastVisitedOn);
 		

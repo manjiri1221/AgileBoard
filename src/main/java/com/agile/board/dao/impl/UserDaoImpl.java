@@ -9,17 +9,23 @@ import org.springframework.data.mongodb.core.aggregation.MatchOperation;
 import org.springframework.data.mongodb.core.aggregation.UnwindOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 
-import com.agile.board.entity.BoardVisit;
 import com.agile.board.entity.User;
+import com.agile.board.model.BoardVisit;
 
 import reactor.core.publisher.Flux;
 
+/**
+ * Separate Dao for User which can be used to implement mongo functionalities using mongo template
+ * @author manjirilakhote
+ *
+ */
 @Configuration
 public class UserDaoImpl{
 	
 	@Autowired
     ReactiveMongoTemplate template;
 	
+	// Method to get the details when the user last visited a board by using aggregation.
 	public Flux<BoardVisit> getLastVisitedTimeForBoard(ObjectId userId, ObjectId boardId) {
 		{
 			

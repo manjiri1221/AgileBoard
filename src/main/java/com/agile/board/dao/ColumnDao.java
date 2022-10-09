@@ -9,6 +9,4 @@ import com.agile.board.entity.Column;
  * @author manjirilakhote
  *
  */
-public interface ColumnDao extends ReactiveMongoRepository<Column, ObjectId>{
-
-}
+public interface ColumnDao extends ReactiveMongoRepository<Column, ObjectId>{}

@@ -10,6 +10,4 @@ import com.agile.board.entity.User;
  * @author manjirilakhote
  *
  */
-public interface UserDao extends ReactiveMongoRepository<User, ObjectId>{
-
-}
+public interface UserDao extends ReactiveMongoRepository<User, ObjectId>{}

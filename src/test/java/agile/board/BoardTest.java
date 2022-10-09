@@ -79,5 +79,18 @@ public class BoardTest {
 		boardService.createBoard(null,null).block();
 		
 	}
+	//Q1 output the board as a JSON message
+	
+	@Test
+	public void listABoardWithColumnsAndCardsTest() {
+		ObjectId boardId = new ObjectId("6341420bc0920229d1ba2bab");
+		boolean assertion = true;
+		try {
+			boardService.listABoardWithColumnsAndCards(boardId).collectList().block();
+		}catch(Exception e) {
+			assertion = false;
+		}
+		assertTrue(assertion);
+	}
 
 }

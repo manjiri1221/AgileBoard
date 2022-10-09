@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 /**
- * Card model/entity
+ * Card entity
  * @author manjirilakhote
  *
  */
@@ -40,5 +40,6 @@ public class Card extends CommonEntity{
 	@Indexed
 	private List<String> tags = new ArrayList<>();
 	private int sequence;
+	//All the users working on the card
 	private ObjectId[] users;
 }

@@ -10,7 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import lombok.Data;
 
 /**
- * Class containing common fields & audit fields
+ * Entity class containing common fields & audit fields
  * @author manjirilakhote
  *
  */

@@ -9,6 +9,4 @@ import com.agile.board.entity.Board;
  * @author manjirilakhote
  *
  */
-public interface BoardDao extends ReactiveMongoRepository<Board, ObjectId>{
-
-}
+public interface BoardDao extends ReactiveMongoRepository<Board, ObjectId>{}

@@ -11,8 +11,8 @@ import org.springframework.util.StringUtils;
 
 import com.agile.board.dao.UserDao;
 import com.agile.board.dao.impl.UserDaoImpl;
-import com.agile.board.entity.BoardVisit;
 import com.agile.board.entity.User;
+import com.agile.board.model.BoardVisit;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,19 +31,21 @@ public class UserService {
 	@Autowired
 	UserDaoImpl userDaoImpl;
 	
+	//Create a user
 	public Mono<User> createUser(String name) throws Exception{
 		if(StringUtils.hasLength(name)) {
 			User user = new User(name);
 			return userDao.save(user);
 		}
 		throw new Exception("name is null or empty");
-		 
 	}
 
+	// Get the time user last visited the given board
 	public Flux<BoardVisit> getLastVisitedTimeForBoard(ObjectId userId, ObjectId boardId) {
 		return userDaoImpl.getLastVisitedTimeForBoard(userId,boardId);
 	}
 
+	// Update whenever user visits the board
 	public Mono<User> updateUserBoardVisit(ObjectId userId, ObjectId boardId) throws Exception {
 		if(userId!=null && boardId!=null) {
 			return userDao.findById(userId).flatMap(user->{
@@ -59,11 +61,8 @@ public class UserService {
 					boardVisit.add(new BoardVisit(boardId,new Date()));
 				
 				user.setBoards(boardVisit);
-				
 				return userDao.save(user);
-				
 			});
-			
 		}
 		throw new Exception("name is null or empty");
 	}

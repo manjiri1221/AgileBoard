@@ -3,7 +3,7 @@ package com.agile.board.entity;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 /**
- * Entity/Model for Board
+ * Entity for Board
  * @author manjirilakhote
  *
  */
