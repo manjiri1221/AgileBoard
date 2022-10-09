@@ -109,5 +109,27 @@ public class ColumnTest {
 		columnService.createColumn(null,null,sequence,null).block();
 		
 	}
+	
+	// Test without name and without board, it should throw an exception
+	
+	@Test(expected = Exception.class)
+	public void createColumnWithoutNameAndBoardTest() throws Exception {
+		
+		int sequence = 1;
+		ObjectId createdBy = new ObjectId("6341420bc0920229d1ba2bab");
+		columnService.createColumn(null,null,sequence,createdBy).block();
+		
+	}
+	
+	// Test without name and without createdBy, it should throw an exception
+	
+	@Test(expected = Exception.class)
+	public void createColumnWithoutNameAndCreatedByTest() throws Exception {
+		
+		int sequence = 1;
+		ObjectId boardId = new ObjectId("6341420bc0920229d1ba2bab");
+		columnService.createColumn(null,boardId,sequence,null).block();
+		
+	}
 
 }
