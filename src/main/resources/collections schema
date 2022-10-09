@@ -1,0 +1,53 @@
+
+Schema of Collections
+
+//Board
+{
+	"_id":"",
+	"name":"", //not null
+	"createdOn":"",
+	"lastModifiedOn":"",
+	"createdBy":$userId,
+	"isActive":true/false	
+}
+
+//Column
+
+{
+	"_id":"",
+	"name":"",
+	"boardId":$boardId //not null
+	"createdBy":$userId,
+	"createdOn":"",
+	"lastModifiedOn":"",
+	"sequence":"",
+	"isActive":true/false
+}
+
+//Card
+{
+	"_id":"",
+	"columnId":$columnId, //not null
+	"name":"",
+	"createdBy":$userId,
+	"createdOn":"",
+	"lastModifiedOn":"",
+	"tags":[],
+	"users":[],
+	"sequence":1/2..,
+	"isActive":true/false
+}
+
+// User
+{
+	"_id":"",
+	"name":"",
+	"boards":[{
+		"boardId":$boardId,
+		"lastVisitedOn":""
+	}],
+	"isActive":true/false,
+	"createdOn":"",
+	"lastModifiedOn":""
+
+}
