@@ -1,6 +1,6 @@
 # AgileBoard
 A backend repo which contains functionality of the Agile Board.
-Agile Board is a replica of ![Trello](https://trello.com/) with a few additional functionalities.
+Agile Board is a replica of [Trello](https://trello.com/) with a few additional functionalities.
 This application supports the APIs for following business cases till now - 
 * Provide the whole board as a json. (To display a board on UI)
 * List all the cards by a specified tag (A search by tag on UI)
